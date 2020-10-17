@@ -1,42 +1,91 @@
-library(DT)
-library(shiny)
-library(googleVis)
 
-shinyServer(function(input, output){
-  # show map using googleVis
-  output$map <- renderGvis({
-    gvisGeoChart(state_stat, "state.name", input$selected,
-                 options=list(region="US", displayMode="regions", 
-                              resolution="provinces",
-                              width="auto", height="auto"))
+
+
+server = function(input, output) {
+  
+  # Basic Numbers Page --------------------------------------------------------------
+
+  
+  # Transaction Text ---
+  n_transaction = reactive({
+    google_transaction %>% 
+      pull(total_transaction)
   })
   
-  # show histogram using googleVis
-  output$hist <- renderGvis({
-    gvisHistogram(state_stat[,input$selected, drop=FALSE])
+  # Number of transactions in UI
+  output$num_transaction = renderText({
+    n_transaction() %>% 
+      sum(na.rm = T)
   })
   
-  # show data using DataTable
-  output$table <- DT::renderDataTable({
-    datatable(state_stat, rownames=FALSE) %>% 
-      formatStyle(input$selected, background="skyblue", fontWeight='bold')
+  # Revenue Text ---
+  n_revenue = reactive({
+    google_revenue %>% 
+      pull(total_revenue)
   })
   
-  # show statistics using infoBox
-  output$maxBox <- renderInfoBox({
-    max_value <- max(state_stat[,input$selected])
-    max_state <- 
-      state_stat$state.name[state_stat[,input$selected] == max_value]
-    infoBox(max_state, max_value, icon = icon("hand-o-up"))
+  # Number of Revenue in Dollars in UI
+  output$total_revenue_dollars = renderText({
+    google_revenue %>% 
+      pull(total_revenue) %>% 
+      sum(na.rm = T)
   })
-  output$minBox <- renderInfoBox({
-    min_value <- min(state_stat[,input$selected])
-    min_state <- 
-      state_stat$state.name[state_stat[,input$selected] == min_value]
-    infoBox(min_state, min_value, icon = icon("hand-o-down"))
+  
+  
+  # Number of Visits ---
+  
+  n_visits = reactive({
+    google_visit_date %>% 
+      pull(total_visits) 
   })
-  output$avgBox <- renderInfoBox(
-    infoBox(paste("AVG.", input$selected),
-            mean(state_stat[,input$selected]), 
-            icon = icon("calculator"), fill = TRUE))
-})
+  
+  # Number of hours in UI
+  output$number_of_visits = renderText({
+    n_visits() %>% 
+      sum()
+  })
+
+  
+  
+  
+  # First Page -------------
+  
+  
+  output$transaction <- renderPlotly(
+    google_transaction %>%
+      ggplot(aes(x = month_char, y = total_transaction)) +
+      geom_col(aes(fill = as.factor(year)), position = "dodge") +
+      ggtitle("Total Transaction by Month") +
+      theme_bw() +
+      xlab('Months') +
+      ylab('Total Transaction') +
+      scale_fill_brewer(palette = 'YlGn', name = '')
+    
+    )
+  
+  output$revenue <- renderPlotly(
+    google_revenue %>%
+      ggplot(aes(x = month_char, y = total_revenue)) +
+      geom_col(aes(fill = as.factor(year)), position = "dodge") +
+      ggtitle("Total Transaction by Month") +
+      theme_bw() +
+      xlab('Months') +
+      ylab('Total Revenue') +
+      scale_fill_brewer(palette = 'YlGn', name = 'Year')
+  )
+  
+  # Second Page ------
+  
+  # Date vs Transaction
+  google_transaction_revenue = reactive({
+    google %>%
+      filter(channelGrouping == input$channelGrouping, country == input$country) %>%
+      group_by(., channelGrouping, country) %>%
+      summarise(total_transaction = sum(transactions, na.rm = T),
+                total_revenue = sum(revenue))
+  })
+  
+
+  
+  
+}

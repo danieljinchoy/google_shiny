@@ -2,33 +2,52 @@ library(DT)
 library(shiny)
 library(shinydashboard)
 
-shinyUI(dashboardPage(
-  dashboardHeader(title = "My Dashboard"),
-  dashboardSidebar(
-    
-    sidebarUserPanel("NYC DSA",
-                     image = "https://yt3.ggpht.com/-04uuTMHfDz4/AAAAAAAAAAI/AAAAAAAAAAA/Kjeupp-eNNg/s100-c-k-no-rj-c0xffffff/photo.jpg"),
-    sidebarMenu(
-      menuItem("Map", tabName = "map", icon = icon("map")),
-      menuItem("Data", tabName = "data", icon = icon("database"))
-    ),
-    selectizeInput("selected",
-                   "Select Item to Display",
-                   choice)
+ui = shiny::htmlTemplate(
+  # Index Page
+  "www/index.html",
+  
+  # Introduction Page ---------
+  
+  # Number of transactions
+  number_of_transactions = textOutput(
+    "num_transaction",
+    inline = T
   ),
-  dashboardBody(
-    tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+  
+  # total revenue in dollars
+  revenue_dollars = textOutput(
+    "total_revenue_dollars",
+    inline = T
+  ),
+  
+  # Number of visits
+  number_of_visits = textOutput(
+    "number_of_visits",
+    inline = T
+  ),
+
+  
+  
+
+  
+
+  # First page: Google Store Transaction and Revenue by date ---------
+ 
+  Transaction_date = mainPanel(
+        fluidRow(
+          column(1, plotlyOutput("transaction")),
+        )
     ),
-    tabItems(
-      tabItem(tabName = "map",
-              fluidRow(infoBoxOutput("maxBox"),
-                       infoBoxOutput("minBox"),
-                       infoBoxOutput("avgBox")),
-              fluidRow(box(htmlOutput("map"), height = 300),
-                       box(htmlOutput("hist"), height = 300))),
-      tabItem(tabName = "data",
-              fluidRow(box(DT::dataTableOutput("table"), width = 12)))
+  Revenue_date = mainPanel(
+        fluidRow(
+          column(1, plotlyOutput("revenue"))
+      )
     )
-  )
-))
+          
+          
+
+    
+    
+)
+
+
