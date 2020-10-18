@@ -82,7 +82,36 @@ ui = shiny::htmlTemplate(
   ),
   
   
-  # Third page:
+  # Page 4:
+  
+  Month_selection = fluidRow(
+    sidebarPanel(
+       selectizeInput(inputId = "month_char",
+                      label = "Month",
+                      choices = unique(google[, 'month_char']))
+      )
+    
+  ),
+  Views_output1 = fluidRow(
+    titlePanel("Traffic Data"),
+    column(1, plotlyOutput("views"))
+  ),
+  
+  Views_output2 = fluidRow(
+    column(1, plotlyOutput("time_on_site"))
+  ),
+  
+  # Page 5:
+  
+  traffic_output1 = fluidRow(
+    titlePanel('Pageviews and Hits vs Revenue (Revenue uner $1000)'),
+    plotlyOutput('plot1')
+  ),
+  traffic_output2 = fluidRow(
+    plotlyOutput('plot2')
+  )
+  
+  
   
   
   

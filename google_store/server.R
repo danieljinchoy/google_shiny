@@ -48,8 +48,9 @@ server = function(input, output, session) {
   
   
   
-  # First Page -------------
+  # Part 1: Summary Statistic -------------
   
+  # Page 1
   
   output$transaction = renderPlotly(
     google_transaction %>%
@@ -74,7 +75,7 @@ server = function(input, output, session) {
       scale_fill_brewer(palette = 'YlGn', name = 'Year')
   )
   
-  # Second Page ------
+  # Page 2
   
   output$transaction_country = renderPlotly(
     google_transaction_country %>%
@@ -92,7 +93,7 @@ server = function(input, output, session) {
     google_revenue_country %>%
       ggplot(aes(x = country, y = total_revenue)) +
       geom_col(position = "dodge") +
-      ggtitle("Total Revenue by Country") +
+      ggtitle("Total Revenue by Country (Top 10)") +
       theme_bw() +
       xlab('Months') +
       ylab('Total Revenue') +
@@ -103,7 +104,9 @@ server = function(input, output, session) {
   
   
   
+  # Part 2: Analyzing Traffic Data-------
   
+  # Page 3
   
   # Channel vs Transaction
   output$channelvisits = renderPlotly(
@@ -129,6 +132,81 @@ server = function(input, output, session) {
       scale_fill_brewer(palette = 'YlGn', name = '') +
       coord_flip()
   )
+  
+  # Page 4
+  
+  observe({
+    month_char <- unique(google %>%
+                     filter(google$month_char == input$month_char) %>%
+                     .$month_char)
+    updateSelectizeInput(
+      session, "month_char",
+      choices = month_char,
+      selected = month_char[1])
+  })
+  
+  google_views <- reactive({
+    google %>%
+      filter(month_char == input$month_char) %>%
+      group_by(channelGrouping) %>%
+      summarise(avg_timeOnSite = mean(timeOnSite),
+                total_hits = sum(hits),
+                avg_hits = mean(hits),
+                total_pageviews = sum(pageviews),
+                avg_pageviews = mean(pageviews))
+  })
+  
+  output$views <- renderPlotly(
+    google_views() %>%
+      gather(key = type, value = views, avg_hits, avg_pageviews) %>%
+      ggplot(aes(x = channelGrouping, y = views, fill = type)) +
+      geom_col(position = "dodge") +
+      ggtitle("Average Hits and Page Views") +
+      xlab('Channels') +
+      ylab('Average Number of Hits and Page Views') +
+      coord_flip()+
+      theme_fivethirtyeight()
+  )
+  
+  output$time_on_site <- renderPlotly(
+    google_views() %>%
+      ggplot(aes(x = channelGrouping, y = avg_timeOnSite)) +
+      geom_col(fill = "green") +
+      ggtitle("Average Time on Site (Sec)") +
+      ylab('Average Time Spend on Site') +
+      coord_flip() +
+      theme_fivethirtyeight()
+  )
+  
+  
+  # Page 5: Exploring relationship
+  
+  
+  # Only focusing on revenue under $1000
+  output$plot1 <- renderPlotly({
+    ggplot(google_vis_rev, aes(x = hits, y = revenue)) +
+      geom_point(aes(color = newVisits), position = 'jitter') +
+      guides(colour=FALSE) +
+      ggtitle('Hits and Revenue') +
+      xlab('Hits') +
+      ylab('Revenue') +
+      theme_fivethirtyeight()
+  })
+  
+  output$plot2 <- renderPlotly({
+    ggplot(google_vis_rev, aes(x = pageviews, y = revenue)) +
+      geom_point(aes(color = newVisits), position = 'jitter') +
+      guides(colour=FALSE) +
+      ggtitle('Pageviews and Revenue') +
+      xlab('Page Views') +
+      ylab('Revenue') +
+      theme_fivethirtyeight()
+  })
+  
+  
+  
+  
+  
   
  # Third page -----------
   # google_interactive = reactive({
