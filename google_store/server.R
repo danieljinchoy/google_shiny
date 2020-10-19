@@ -52,6 +52,8 @@ server = function(input, output, session) {
   
   # Page 1
   
+  
+  
   output$transaction = renderPlotly(
     google_transaction %>%
       ggplot(aes(x = month_char, y = total_transaction)) +
@@ -83,7 +85,7 @@ server = function(input, output, session) {
       geom_col(position = "dodge") +
       ggtitle("Total Transaction by Country") +
       theme_bw() +
-      xlab('Months') +
+      xlab('Country') +
       ylab('Total Transaction') +
       coord_flip()
   )
@@ -123,7 +125,7 @@ server = function(input, output, session) {
   
   
   output$channel_transactions = renderPlotly(
-    google_channel_transactions %>%
+    google_channel_transactions2 %>%
       ggplot(aes(x = channelGrouping, y = total_transactions)) +
       geom_col(aes(fill = channelGrouping), position = "dodge") +
       ggtitle("Total Transactions by Channel") +
@@ -135,15 +137,15 @@ server = function(input, output, session) {
   
   # Page 4
   
-  observe({
-    month_char <- unique(google %>%
-                     filter(google$month_char == input$month_char) %>%
-                     .$month_char)
-    updateSelectizeInput(
-      session, "month_char",
-      choices = month_char,
-      selected = month_char[1])
-  })
+  # observe({
+  #   month_char <- unique(google %>%
+  #                    filter(google$month_char == input$month_char) %>%
+  #                    .$month_char)
+  #   updateSelectizeInput(
+  #     session, "month_char",
+  #     choices = month_char,
+  #     selected = month_char[1])
+  # })
   
   google_views <- reactive({
     google %>%
@@ -185,9 +187,8 @@ server = function(input, output, session) {
   # Only focusing on revenue under $1000
   output$plot1 <- renderPlotly({
     ggplot(google_vis_rev, aes(x = hits, y = revenue)) +
-      geom_point(aes(color = newVisits), position = 'jitter') +
+      geom_point(aes(color = newVisits)) +
       guides(colour=FALSE) +
-      ggtitle('Hits and Revenue') +
       xlab('Hits') +
       ylab('Revenue') +
       theme_fivethirtyeight()
@@ -195,67 +196,53 @@ server = function(input, output, session) {
   
   output$plot2 <- renderPlotly({
     ggplot(google_vis_rev, aes(x = pageviews, y = revenue)) +
-      geom_point(aes(color = newVisits), position = 'jitter') +
+      geom_point(aes(color = newVisits)) +
       guides(colour=FALSE) +
-      ggtitle('Pageviews and Revenue') +
       xlab('Page Views') +
       ylab('Revenue') +
       theme_fivethirtyeight()
   })
   
+  # Page 6: 
   
+  # Channel vs Transaction
+  output$plot3 = renderPlotly({
+    ggplot(google_channel_transactions, aes(x = channelGrouping, y = total_visits)) +
+      geom_col(aes(fill = newVisits), position = 'dodge') +
+      guides(colour = FALSE) +
+      xlab('Channels') +
+      ylab('Total Visit Number') +
+      theme_fivethirtyeight() +
+      coord_flip()
+  })
   
+  output$plot4 = renderPlotly({
+    ggplot(google_channel_transactions, aes(x = channelGrouping, y = average_hit_number)) +
+      geom_col(aes(fill = newVisits), position = 'dodge') +
+      guides(colour = FALSE) +
+      xlab('Channels') +
+      ylab('Average Hit Number') +
+      theme_bw() +
+      coord_flip()
+  })
   
+  output$plot5 = renderPlotly({
+    ggplot(google_transactions_device, aes(x = deviceCategory, y = total_visit_number)) +
+      geom_col(aes(fill = newVisits), poisiton = 'dodge') +
+      guides(colour = FALSE) +
+      xlab('Device') +
+      ylab('Visit Number') +
+      theme_fivethirtyeight()
+  })
   
-  
- # Third page -----------
-  # google_interactive = reactive({
-  #   pageviews <- input$pageviews
-  #   minmonth <- input$month[1]
-  #   maxmonth <- input$month[2]
-  #   
-  #   # Apply filters
-  #   m <- google %>%
-  #     filter(
-  #       pageviews >= pageviews,
-  #       month >= minmonth,
-  #       month <= maxmonth
-  #     )
-  #   
-  #   # Optional: filter by genre
-  #   if (input$channelGrouping != "All") {
-  #     channelGrouping <- input$channelGrouping
-  #     m <- m %>% filter(channelGrouping == channelGrouping)
-  #   }
-  #   
-  #   m <- as.data.frame(m)
-  #   
-  # })
-  # 
-  # 
-  # vis <- reactive({
-  #   # Lables for axes
-  #   xvar_name <- names(axis_vars)[axis_vars == input$xvar]
-  #   yvar_name <- names(axis_vars)[axis_vars == input$yvar]
-  #   
-  #   # Normally we could do something like props(x = ~BoxOffice, y = ~Reviews),
-  #   # but since the inputs are strings, we need to do a little more work.
-  #   xvar <- prop("x", as.symbol(input$xvar))
-  #   yvar <- prop("y", as.symbol(input$yvar))
-  #   
-  #   google_interactive %>%
-  #     ggvis(x = xvar, y = yvar) %>%
-  #     layer_points(size := 50, size.hover := 200,
-  #                  fillOpacity := 0.2, fillOpacity.hover := 0.5) %>%
-  #     add_axis("x", title = xvar_name) %>%
-  #     add_axis("y", title = yvar_name)
-  # })
-  # 
-  # vis %>% bind_shiny("plot1")
-  
-  
-  
-  
+  output$plot6 = renderPlotly({
+    ggplot(google_transactions_device, aes(x = deviceCategory, y = average_hit_number)) +
+      geom_col(aes(fill = newVisits), poisiton = 'dodge') +
+      guides(colour = FALSE) +
+      xlab('Device') +
+      ylab('Average Hit Number') +
+      theme_fivethirtyeight()
+  })
   
   
   
