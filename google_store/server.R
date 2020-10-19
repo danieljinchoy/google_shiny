@@ -170,7 +170,8 @@ server = function(input, output, session) {
       xlab('Channels') +
       ylab('Average Number of Hits and Page Views') +
       coord_flip()+
-      theme_fivethirtyeight() +
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
+      theme(legend.background = element_rect(fill="#e6e6e6")) +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
   )
   
@@ -198,7 +199,8 @@ server = function(input, output, session) {
       guides(colour=FALSE) +
       xlab('Hits') +
       ylab('Revenue') +
-      theme_fivethirtyeight()
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6"))
   })
   
   output$plot2 <- renderPlotly({
@@ -208,7 +210,8 @@ server = function(input, output, session) {
       guides(colour=FALSE) +
       xlab('Page Views') +
       ylab('Revenue') +
-      theme_fivethirtyeight()
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6"))
   })
   
   # Page 6: 
@@ -220,8 +223,9 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Channels') +
       ylab('Total Visit Number') +
-      theme_fivethirtyeight() +
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip() +
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
       scale_fill_manual(values = c("#00AFBB", "#FC4E07"))
   })
   
@@ -231,8 +235,9 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Channels') +
       ylab('Average Hit Number') +
-      theme_fivethirtyeight() +
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip() +
+      theme(legend.background = element_rect(fill="#e6e6e6")) +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
   })
   
@@ -243,7 +248,8 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Device') +
       ylab('Visit Number') +
-      theme_fivethirtyeight()
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6"))
   })
   
   output$plot6 = renderPlotly({
@@ -252,7 +258,8 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Device') +
       ylab('Average Hit Number') +
-      theme_fivethirtyeight() +
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
   })
   
@@ -263,7 +270,8 @@ server = function(input, output, session) {
       geom_col(fill = "#E7B800") +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07")) +
       coord_flip() +
-      theme_fivethirtyeight() +
+      theme(legend.background = element_rect(fill="#e6e6e6")) +
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
       ylab('Bounce Rate') +
       xlab('Page') +
       ggtitle('Bounce Rates by Page')
@@ -276,7 +284,8 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Month') +
       ylab('RVR') +
-      theme_fivethirtyeight()
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6"))
   })
   
   output$plot9 = renderPlotly({
@@ -286,7 +295,8 @@ server = function(input, output, session) {
       guides(colour = FALSE) +
       xlab('Page Path') +
       ylab('Visit Number') +
-      theme_fivethirtyeight() +
+      theme(legend.background = element_rect(fill="#e6e6e6"))+
+      theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip()
   })
 

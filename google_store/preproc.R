@@ -230,20 +230,7 @@ ggplot(google_vis_rev, aes(x = pageviews, y = revenue)) +
 
 
 
-
-
-
-
-
-
-#---
-
-
-
-
-
-# Visits by device (Not that important. Just want to get some insights on which devices consumers are using
-# to view google merchandis store. Perhaps this can give us some insight in the future)
+# Visits by device 
 google_transactions_device = google %>% 
   select(., fullVisitorId, deviceCategory, visits, newVisits, hits) %>% 
   group_by(deviceCategory, newVisits) %>% 
