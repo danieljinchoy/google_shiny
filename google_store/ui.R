@@ -31,10 +31,10 @@ ui = shiny::htmlTemplate(
 
   # First page: Google Store Transaction and Revenue by date ---------
  
-  Transaction_date = mainPanel(
-        fluidRow(
-          column(1, plotlyOutput("transaction")),
-        )
+  Transaction_date = fluidRow(
+    titlePanel('Total Transaction by Month'),
+    column(1, plotlyOutput("transaction"))
+    
   ),
   
   # Revenue_date = mainPanel(
@@ -45,10 +45,10 @@ ui = shiny::htmlTemplate(
   # 
   # Second page:
   
-  Transaction_country= mainPanel(
-        fluidRow(
-           column(1, plotlyOutput("transaction_country")),
-      )
+  Transaction_country= fluidRow(
+    titlePanel('Total Transaction by Country'),
+    column(1, plotlyOutput('transaction_country'))
+ 
   ),
   
   Revenue_country= mainPanel(

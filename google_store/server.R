@@ -58,7 +58,6 @@ server = function(input, output, session) {
     google_transaction %>%
       ggplot(aes(x = month_char, y = total_transaction)) +
       geom_col(aes(fill = as.factor(year)), position = "dodge") +
-      ggtitle("Total Transaction by Month") +
       theme_bw() +
       xlab('Months') +
       ylab('Total Transaction') +
@@ -70,7 +69,6 @@ server = function(input, output, session) {
     google_revenue %>%
       ggplot(aes(x = month_char, y = total_revenue)) +
       geom_col(aes(fill = as.factor(year)), position = "dodge") +
-      ggtitle("Total Revenue by Month") +
       theme_bw() +
       xlab('Months') +
       ylab('Total Revenue') +
@@ -83,7 +81,6 @@ server = function(input, output, session) {
     google_transaction_country %>%
       ggplot(aes(x = reorder(country, total_transaction), y = total_transaction)) +
       geom_col(fill = "#E7B800", position = "dodge") +
-      ggtitle("Total Transaction by Country") +
       theme_bw() +
       xlab('Country') +
       ylab('Total Transaction') +
@@ -243,7 +240,7 @@ server = function(input, output, session) {
   
   output$plot5 = renderPlotly({
     ggplot(google_transactions_device, aes(x = deviceCategory, y = total_visit_number)) +
-      geom_col(aes(fill = newVisits), poisiton = 'dodge') +
+      geom_col(aes(fill = newVisits), position = 'dodge') +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07")) +
       guides(colour = FALSE) +
       xlab('Device') +
@@ -254,7 +251,7 @@ server = function(input, output, session) {
   
   output$plot6 = renderPlotly({
     ggplot(google_transactions_device, aes(x = deviceCategory, y = average_hit_number)) +
-      geom_col(aes(fill = newVisits), poisiton = 'dodge') +
+      geom_col(aes(fill = newVisits), position = 'dodge') +
       guides(colour = FALSE) +
       xlab('Device') +
       ylab('Average Hit Number') +
@@ -279,7 +276,7 @@ server = function(input, output, session) {
   
   output$plot8 = renderPlotly({
     ggplot(google_returning_visitors2, aes(x = as.factor(month), y = RVR)) +
-      geom_col(fill = "#E7B800", poisiton = 'dodge') +
+      geom_col(fill = "#E7B800", position = 'dodge') +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07")) +
       guides(colour = FALSE) +
       xlab('Month') +
@@ -290,7 +287,7 @@ server = function(input, output, session) {
   
   output$plot9 = renderPlotly({
     ggplot(google_visited_pages, aes(x = reorder(pagePath, visit_number), y = visit_number)) +
-      geom_col(fill = "#FC4E07", poisiton = 'dodge') +
+      geom_col(fill = "#FC4E07", position = 'dodge') +
       scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07")) +
       guides(colour = FALSE) +
       xlab('Page Path') +
