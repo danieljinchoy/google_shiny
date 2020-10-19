@@ -81,7 +81,7 @@ server = function(input, output, session) {
   
   output$transaction_country = renderPlotly(
     google_transaction_country %>%
-      ggplot(aes(x = country, y = total_transaction)) +
+      ggplot(aes(x = reorder(country, total_transaction), y = total_transaction)) +
       geom_col(fill = "#E7B800", position = "dodge") +
       ggtitle("Total Transaction by Country") +
       theme_bw() +

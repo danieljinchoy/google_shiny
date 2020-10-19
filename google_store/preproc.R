@@ -274,6 +274,8 @@ google_returning_visitors2 = google_returning_visitors %>%
   summarise(total_visitors_num = sum(total_visitors), total_returning_visitors = sum(returning_visitors)) %>%
   arrange(year) %>% 
   mutate(RVR = total_returning_visitors/total_visitors_num * 100)
+
+
 # insight: RVR is low October and November
 
 
