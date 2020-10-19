@@ -61,7 +61,7 @@ ui = shiny::htmlTemplate(
   
   # Third page: 
   select_data = fluidRow(
-    titlePanel('M'),
+    titlePanel('Average Hits and Page Views by Month'),
     sidebarLayout(
       sidebarPanel(
         selectizeInput(inputId = 'month_char',
@@ -138,20 +138,37 @@ ui = shiny::htmlTemplate(
   
   traffic_output4 = fluidRow(
     titlePanel('Channels vs AVG Hits'),
-    plotlyOutput('plot3')
+    plotlyOutput('plot4')
   ),
   
   traffic_output5 = fluidRow(
     titlePanel('Device vs Visits'),
-    plotlyOutput('plot3')
+    plotlyOutput('plot5')
   ),
   
   traffic_output6 = fluidRow(
     titlePanel('Device vs AVG Hits'),
-    plotlyOutput('plot3')
+    plotlyOutput('plot6')
+  ),
+  
+  traffic_output7 = fluidRow(
+    titlePanel('Bounce Rate by Page'),
+    plotlyOutput('plot7')
+  ),
+  
+  traffic_output8 = fluidRow(
+    titlePanel('RVR by Month'),
+    plotlyOutput('plot8')
+  ),
+  
+  traffic_output9 = fluidRow(
+    titlePanel('Page Path Visit Number'),
+    plotlyOutput('plot9')
   )
   
 
 )
+
+
 
 

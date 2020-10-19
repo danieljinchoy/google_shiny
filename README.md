@@ -15,6 +15,24 @@ In the project folder, you can find the following:
 
 Google Marketing Team is planning to expand its online merchandise store as part of its [Brand Merchandising] project. Prior to expansion, the team wants to understand how its online store is functioning by analyzing consumer's experience with the website by looking into the website's traffic data and how well Google Merchandise store in terms of transaction number andr revenue. 
 
-## Findings ##
+## Variables ##
 
-### Summary 
+**Some important variables that were used in this project::**
+
+- bounce_rate: Bounce rate is single-page sessions divided by all sessions, or the percentage of all sessions on your site in which users viewed only a single page and triggered only a single request to the Analytics server. If the success of your site depends on users viewing more than one page, then, yes, a high bounce rate is bad. For example, if your home page is the gateway to the rest of your site (e.g., news articles, product pages, your checkout process) and a high percentage of users are viewing only your home page, then you don’t want a high bounce rate.
+
+- hit: An interaction that results in data being sent to Analytics
+
+- pageviews: Page views
+
+- timeOnSite: time in seconds user spent on website
+
+- pagePath: Page path
+
+- channelGrouping: [link to Explanation on channelGrouping!](https://support.google.com/analytics/answer/6010097?hl=en)
+
+- newVisits: Whether user is a new customer or a returning customer
+
+- revenue: Originally from totalTransactionRevenue. revenue = totalTransactionRevenue/1000000
+
+- socialEngagementType: Whether user socially engaged with the website or not by following a social media platform or not.

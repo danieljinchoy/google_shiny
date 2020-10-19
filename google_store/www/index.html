@@ -64,10 +64,10 @@
                 <ul class="header-nav__list">
                     <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
                     <li><a class="smoothscroll"  href="#about" title="about">Introduction</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="works">Summary</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="works">Works</a></li>
-                    <li><a class="smoothscroll"  href="#clients" title="clients">Clients</a></li>
-                    <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
+                    <li><a class="smoothscroll"  href="#works" title="works">1. Summary</a></li>
+                    <li><a class="smoothscroll"  href="#works" title="works">2. Traffic</a></li>
+                    <li><a class="smoothscroll"  href="#clients" title="clients">3. Holiday</a></li>
+                    <li><a class="smoothscroll"  href="#contact" title="contact">Conclusion</a></li>
                 </ul>
 
                 <p> Shiny Project created by <a href='#0'>Daniel Choy</a> from NYC Data Science Academy</p>
@@ -75,13 +75,13 @@
     
                 <ul class="header-nav__social">
                     <li>
-                        <a href="https://facebook.com/vivek.katial"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/ChelseaFC/"><i class="fa fa-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/vivekkatial"><i class="fa fa-twitter"></i></a>
+                        <a href="https://twitter.com/ChelseaFC"><i class="fa fa-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/vivekkatial/"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/ChelseaFC/"><i class="fa fa-instagram"></i></a>
                     </li>
                 </ul>
 
@@ -111,9 +111,9 @@
                 <h3>Problem Statement</h3>
 
                 <h1>
-                    How long does the consumer stay on our website?<br>
-                    How well is our store doing during holidays?<br>
-                    How can our store grow based on our traffic data? <br>
+                    How long does our consumer stay on our website?<br>
+                    Bounce Rate of our online store?<br>
+                    Through which channel is our consumer coming? <br>
                 </h1>
                 
 
@@ -143,16 +143,7 @@
             <li>
                 <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
             </li>
-            <li>
-                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
-            </li>
-        </ul> 
+
 
         <!-- end home-content -->
 
@@ -215,14 +206,14 @@
         <div class="row section-header has-bottom-sep aos-init aos-animate" data-aos="fade-up">
             <div class="col-full">
                 <h2 class="subhead">Part 1: Summary Statistics</h2>
-                <h4 class="display-2">Google Merchandise Store total transaction number and total revenue</h4>
+                <h4 class="display-2">Google Merchandise Store total transaction number</h4>
     
 
             </div>
         </div>
 
       <div class="intro-wrap"> 
- 
+ 	
       </div>
       
       <div class="row services-list block-1-2 block-tab-full">
@@ -230,17 +221,13 @@
             {{ Transaction_date }}
         </div>
         <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
-            {{ Revenue_date }}
+            {{ Transaction_country }}
         </div>
 
       <div class="intro-wrap"> 
  
       </div>
       
-      <div class="row services-list block-1-2 block-tab-full">
-        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
-            {{ Transaction_country }}
-        </div>
 
 
       </div>
@@ -259,72 +246,61 @@
                 <h1 class="display-2">How long does the consumer stay in our website?</h1>
             </div>
         </div> <!-- end section-header -->
+      
+      <div class="intro-wrap"> 
+      	{{ select_data }}
+      </div>
 
-        <div class="row services-list block-1-2 block-tab-full">
+
+ 
+      <div class="row services-list block-1-2 block-tab-full">      
         <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
-            
+            {{ traffic_output1 }}
+        </div>
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output8 }}
         </div>
 
+      <div class="row services-list block-1-2 block-tab-full">      
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output3 }}
+        </div>
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output4 }}
+        </div>
 
-        <div class="row clients-outer" data-aos="fade-up">
-            <div class="col-full">
-                <div class="clients">
-                    
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/apple.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/atom.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/blackberry.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/dropbox.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/envato.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/firefox.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/joomla.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="images/clients/magento.png" /></a>
-                     
-                </div> <!-- end clients -->
-            </div> <!-- end col-full -->
-        </div> <!-- end clients-outer -->
+      <div class="row services-list block-1-2 block-tab-full">      
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output5 }}
+        </div>
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output6 }}
+        </div>
+
+      <div class="row services-list block-1-2 block-tab-full">      
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output9 }}
+        </div>
+        <div class="col-block service-item aos-init aos-animate" data-aos="fade-up">
+            {{ traffic_output7 }}
+        </div>        
+
+
+      </div>
 
         <div class="row clients-testimonials" data-aos="fade-up">
             <div class="col-full">
                 <div class="testimonials">
 
                     <div class="testimonials__slide">
-
-                        <p>Qui ipsam temporibus quisquam vel. Maiores eos cumque distinctio nam accusantium ipsum. 
-                        Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium quos qui praesentium corpori.
-                        Excepturi nam cupiditate culpa doloremque deleniti repellat.</p>
-
-                        <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Tim Cook</span> 
-                            <span class="testimonials__pos">CEO, Apple</span>
-                        </div>
-
+                        <p> Our website is being visited mmostly via organic search. This means that most of our consumers or potential consumers are visiting our websites through unpaid search. Users visiting our website from a search engine's organic results have a very specific intent and if we can provide them with a solution or answer to their purpose, they are more likely to convert.</p>
                     </div>
-
                     <div class="testimonials__slide">
                         
-                        <p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.
-                        Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>
-
-                        <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Sundar Pichai</span> 
-                            <span class="testimonials__pos">CEO, Google</span>
-                        </div>
-
+                        <p> Our home page has a bounce rate of approximately 30%. As an online merchandise store, we want our consumers to view more than one page, so having a high bounce rate is bad. In order to have low bounce rate, we need to enhance our user experience with out online merchandise store website. Also</p>
                     </div>
-
-                    <div class="testimonials__slide">
-                        
-                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  
-                        Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.</p>
-
-                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
-                        <div class="testimonials__info">
-                            <span class="testimonials__name">Satya Nadella</span> 
-                            <span class="testimonials__pos">CEO, Microsoft</span>
-                        </div>
-
+                    <div class="testimonials__slide">                    
+                        <p> Most of our customers are using desktops to access our online merchandise store. This is most likely going to be the case since we dont have any apps that are available. Hence, enhancing the user experience via desktop should be important. It is also notworthy that October and November have low rate of returning visitors (RVR). This also means that we have more new visitors using our online store during this time period. </p>
                     </div>
 
                 </div><!-- end testimonials -->
@@ -346,204 +322,75 @@
                 
             <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                 <div class="col-full">
-                    <h3 class="subhead">Recent Works</h3>
-                    <h1 class="display-2 display-2--light">We love what we do, check out some of our latest works</h1>
+                    <h3 class="subhead"> Part 3: Analysis during Holidays</h3>
+                    <h1 class="display-2 display-2--light"> Analysis on Devices, Pages, and Browser</h1>
+                    <h2><a href="styles.html">Coming Soon</a></h2>
                 </div>
             </div> <!-- end section-header -->
 
         </div> <!-- end intro-wrap -->
 
-        <div class="row works-content">
-            <div class="col-full masonry-wrap">
-                <div class="masonry">
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="images/portfolio/lady-shutterbug.jpg" 
-                                         srcset="images/portfolio/lady-shutterbug.jpg 1x, images/portfolio/lady-shutterbug@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Shutterbug
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Branding
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft" data-size="1050x700">
-                                    <img src="images/portfolio/woodcraft.jpg" 
-                                         srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Woodcraft
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Web Design
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">
-                                    <img src="images/portfolio/the-beetle.jpg"
-                                         srcset="images/portfolio/the-beetle.jpg 1x, images/portfolio/the-beetle@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    The Beetle
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Web Development
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-grow-green.jpg" class="thumb-link" title="Grow Green" data-size="1050x700">
-                                    <img src="images/portfolio/grow-green.jpg" 
-                                         srcset="images/portfolio/grow-green.jpg 1x, images/portfolio/grow-green@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Grow Green
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Branding
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-guitarist.jpg" class="thumb-link" title="Guitarist" data-size="1050x700">
-                                    <img src="images/portfolio/guitarist.jpg" 
-                                         srcset="images/portfolio/guitarist.jpg 1x, images/portfolio/guitarist@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Guitarist
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Web Design
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="images/portfolio/gallery/g-palmeira.jpg" class="thumb-link" title="Palmeira" data-size="1050x700">
-                                    <img src="images/portfolio/palmeira.jpg"
-                                         srcset="images/portfolio/palmeira.jpg 1x, images/portfolio/palmeira@2x.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Palmeira
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Web Design
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-
-                </div> <!-- end masonry -->
-            </div> <!-- end col-full -->
-        </div> <!-- end works-content -->
-
-    </section> <!-- end s-works -->
 
 
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact">
+
+        <div class="overlay"></div>
+        <div class="contact__line"></div>
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Conclusion</h3>
+                <h1 class="display-2 display-2--light">Limitation and Future Work</h1>
+                <h2><a href="styles.html">Continue</a></h2>
+            </div>
+        </div>
+
+        
+
+        </div> <!-- end contact-content -->
+
+    </section> <!-- end s-contact -->
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+
+                <div class="logo"></div>
+                NYC Data Science Academy R Shiny Project
+
+            </div>
+
+            <div class="col-six tab-full right footer-subscribe">
+
+                <h4>by Daniel Choy</h4>
+                <p></p>
+
+            </div>
+
+        </div> <!-- end footer-main -->
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                
+
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
   
 
 
