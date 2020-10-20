@@ -61,12 +61,12 @@ ui = shiny::htmlTemplate(
   
   # Third page: 
   select_data = fluidRow(
-    titlePanel('Average Hits and Page Views by Month'),
+    titlePanel('Consumer Visit Time in a 24 Hour Clock'),
     sidebarLayout(
       sidebarPanel(
-        selectizeInput(inputId = 'month_char',
-                       label = 'month',
-                       choices = unique(google[, 'month_char']))
+        selectizeInput(inputId = 'newVisits',
+                       label = 'New or Returning',
+                       choices = unique(google[, 'newVisits']))
       
     ),
     mainPanel(
@@ -164,6 +164,11 @@ ui = shiny::htmlTemplate(
   traffic_output9 = fluidRow(
     titlePanel('Page Path Visit Number'),
     plotlyOutput('plot9')
+  ),
+  
+  traffic_output10 = fluidRow(
+    titlePanel('     Revenue by Product Category'),
+    plotlyOutput('plot10')
   )
   
 

@@ -11,6 +11,7 @@ google_bounce_pageviews = read.csv('data/google_bounce_pageviews.csv')
 google_returning_visitors = read.csv('data/google_returning_visitors.csv')
 google_store_visitors = read.csv('data/google_store_visitors.csv')
 google_visited_pages = read.csv('data/google_visited_pages.csv')
+google_category = read.csv('data/google_category')
 
 
 # Selecting our interest variables
@@ -160,6 +161,17 @@ google_channel_transactions2 = google %>%
 
 
 
+google_category2 = google_category %>% 
+  group_by(.,product_category) %>% 
+  summarise(total_product_revenue = sum(product_revenue, na.rm = T),
+            total_transaction = n()) %>% 
+  arrange(desc(total_product_revenue)) %>% 
+  top_n(7)
+
+google_category2 %>%
+  gather(key = type, value = "value", total_product_revenue, total_transaction) %>%
+  ggplot(., aes(x = reorder(product_category, value), y = value, fill = type)) +
+  geom_col(position = 'dodge')
 
 #####------------------------- Part 2: Traffic Data ---------------------------#####
 # Questions:
@@ -348,3 +360,21 @@ google_vis %>%
 
 
 
+
+google = google %>% 
+  mutate(hour = hour(visitStartTime))
+
+google %>% 
+  group_by(hour, newVisits) %>% 
+  summarise(total_visits = sum(visits)) %>% 
+  ggplot(., aes(x = hour, y = total_visits, fill = channelGrouping)) +
+  geom_col(position = 'dodge')
+
+
+# ----------
+
+
+fit <- lm(revenue ~ hits + pageviews + timeOnSite, data=google)
+summary(fit)
+hits.res = residuals(fit)
+plot(google$hits, hits.res)

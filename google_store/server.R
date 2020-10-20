@@ -149,27 +149,25 @@ server = function(input, output, session) {
   
   google_views <- reactive({
     google %>%
-      filter(month_char == input$month_char) %>%
-      group_by(channelGrouping) %>%
+      filter(newVisits == input$newVisits) %>%
+      group_by(hour) %>%
       summarise(avg_timeOnSite = mean(timeOnSite),
                 total_hits = sum(hits),
-                avg_hits = mean(hits),
+                total_visits = sum(visits),
                 total_pageviews = sum(pageviews),
                 avg_pageviews = mean(pageviews))
   })
   
   output$views <- renderPlotly(
     google_views() %>%
-      gather(key = type, value = views, avg_hits, avg_pageviews) %>%
-      ggplot(aes(x = channelGrouping, y = views, fill = type)) +
+      gather(key = type, value = views, total_visits, total_hits) %>%
+      ggplot(., aes(x = hour, y = views, fill = type)) +
       geom_col(position = "dodge") +
-      ggtitle("Average Hits and Page Views") +
-      xlab('Channels') +
-      ylab('Average Number of Hits and Page Views') +
-      coord_flip()+
+      xlab('Visit Time in Hour') +
+      ylab('Visit Number and Total Hit Number') +
       theme(plot.background = element_rect(fill = "#e6e6e6")) +
       theme(legend.background = element_rect(fill="#e6e6e6")) +
-      scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
+      scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"), name = 'Type', labels = c("Total Page Views", "Total Visits"))
   )
   
   output$time_on_site <- renderPlotly(
@@ -223,7 +221,7 @@ server = function(input, output, session) {
       theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip() +
       theme(legend.background = element_rect(fill="#e6e6e6"))+
-      scale_fill_manual(values = c("#00AFBB", "#FC4E07"))
+      scale_fill_manual(values = c("#00AFBB", "#E7B800"))
   })
   
   output$plot4 = renderPlotly({
@@ -235,7 +233,7 @@ server = function(input, output, session) {
       theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip() +
       theme(legend.background = element_rect(fill="#e6e6e6")) +
-      scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07"))
+      scale_fill_manual(values = c("#00AFBB", "#E7B800"))
   })
   
   output$plot5 = renderPlotly({
@@ -296,5 +294,22 @@ server = function(input, output, session) {
       theme(plot.background = element_rect(fill = "#e6e6e6")) +
       coord_flip()
   })
+  
+  output$plot10 = renderPlotly({
+    google_category2 %>%
+      gather(key = type, value = "value", total_product_revenue, total_transaction) %>%
+      ggplot(., aes(x = reorder(product_category, value), y = value, fill = type)) +
+      geom_col(position = 'dodge') +
+      scale_fill_manual(values = c("#00AFBB", "#E7B800", "#FC4E07")) +
+      guides(color = F) +
+      xlab('Product Category') +
+      ylab('Total Product Revenue') +
+      theme(legend.title = element_blank()) +
+      theme_bw()
+  })
 
+  google_category2 %>%
+    gather(key = type, value = "value", total_product_revenue, total_transaction) %>%
+    ggplot(., aes(x = reorder(product_category, value), y = value, fill = type)) +
+    geom_col(position = 'dodge')
 }
