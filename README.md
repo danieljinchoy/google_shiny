@@ -13,6 +13,9 @@ In the project folder, you will find the following:
 
 ## Problem Statement ##
 
+![Screen Shot 2021-02-22 at 12 03 01 PM](https://user-images.githubusercontent.com/29543481/108742998-57e7e180-7506-11eb-91b5-8d4464d7ae07.png)
+
+
 Google Marketing Team is planning to expand its online merchandise store as part of its [Brand Merchandising] project. Prior to expansion, the team wants to understand how its online store is functioning by analyzing consumer's experience with the website by looking into the website's traffic data and exploring how well Google Merchandise store in terms of transaction number andr revenue. 
 
 By creating an imaginary scenario in which Google’s marketing team is trying to expand its online store through brand merchandising, my goal was to explore the dataset and find important interest variables to answer some common ecommerce marketing questions. These include consumer spending analysis, traffic analysis, and seasonality analysis. Based on this imaginary scenario, the core problem statement of my project is: 
