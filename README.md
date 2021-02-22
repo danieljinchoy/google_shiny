@@ -22,6 +22,9 @@ By creating an imaginary scenario in which Google’s marketing team is trying t
 
 *How can Google online merchandise store attract more consumers by 50% by improving online store’s user experience and coming up with better strategic planning based on analyzing seasonality patterns for the next calendar year?* 
 
+![Screen Shot 2021-02-22 at 12 03 18 PM](https://user-images.githubusercontent.com/29543481/108743442-c75dd100-7506-11eb-86f6-87b89357906c.png)
+
+
 ## Variables ##
 
 **Some important variables that were used in this project:**
