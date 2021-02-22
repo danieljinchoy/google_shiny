@@ -1,4 +1,4 @@
-https://youtu.be/LWOMG_DS338
+https://youtube.com/embed/LWOMG_DS338
 
 # Shiny Project on Google Merchandise Store #
 
