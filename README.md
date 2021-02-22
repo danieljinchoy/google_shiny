@@ -1,3 +1,6 @@
+![Trimmed](https://user-images.githubusercontent.com/29543481/108746367-3c7ed580-750a-11eb-8ae9-24248909ba4b.gif)
+
+
 # Shiny Project on Google Merchandise Store #
 
 
